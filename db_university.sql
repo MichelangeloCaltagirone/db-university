@@ -1,3 +1,7 @@
+-- dopo aver fatto diverse query e averne osservato i valori per vedere se corrispondevano effetivamente alla richiesta che ho fatto,
+-- ho lasciato riportato anche qui il COUNT() per comodità, al posto dell'effetiva lista prodotta con *,
+-- perchè avendo già il risultato della query potevo confrontarli immediatamente.
+
 -- tutti gli studenti nati nel 1990 - 160 è il risultato 
 SELECT COUNT(*) FROM `students` WHERE `date_of_birth` >= "1990-01-01" AND `date_of_birth` <= "1990-12-31";
 
@@ -21,3 +25,17 @@ SELECT COUNT(*) FROM `departments`;
 
 -- seleziona tutti i professori che non hanno numero di cellulare presente - 50 è il risultato
 SELECT COUNT(*) FROM `teachers` WHERE `phone` IS NULL;
+
+
+
+-- inserire un nuovo studente all'interno della tabella studenti
+INSERT INTO `students`
+VALUES (33333,34,"michelangelo","caltagirone","1997-05-09","CLTMHL97E09E879V","2021-07-07",5678908,"arcidiavol@ieol.com");
+
+-- cambiare il valore della colonna office_number al prof. Pietro Rizzo
+-- cambio ufficialmente in maniera irrevocabile il valore del dato alla colonna indicata
+UPDATE teachers SET office_number = 126 WHERE id = 58;
+
+-- eliminare una riga da una tabella (in questo caso la riga corrispondente allo studente inserito prima)
+-- in questo caso conosco l'id dello studente in questione, quindi lo userò indicandolo nel WHERE
+DELETE FROM `students` WHERE id = 33333;
